@@ -1,0 +1,34 @@
+.LoadingContainer {
+    /*display: none;*/
+}
+
+.Loading {
+    animation: loading 2s infinite alternate linear;
+    border-radius: 50%;
+    display: inline-block;
+    text-align: center;
+}
+
+@keyframes loading {
+    0% {
+        font-size: 14px;
+    }
+    15% {
+        margin-top: 300px;
+    }
+    32% {
+        transform: rotate(45deg);
+    }
+    50% {
+        font-size: 120px;
+        color: pink;
+        background: blue;
+    }
+    64% {
+        transform: rotate(-90deg);
+    }
+    100% {
+        font-size: 240px;
+    }
+}
+

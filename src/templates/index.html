@@ -1,0 +1,56 @@
+<html>
+<head>
+    <title>Hi</title>
+    <link rel="stylesheet" href="{{ css_url }}" type="text/css">
+</head>
+<body>
+<main class="Container">
+    {% if server_up %}
+    <div class="Status--Positive">The server is up</div>
+    {% else %}
+    <div class="Status--Negative">The server is down</div>
+    <div class="Action">
+        <button id="wakeup">Wake it up</button>
+    </div>
+    <div class="LoadingContainer">
+        <div class="Loading">
+            👍 Loading 👍
+        </div>
+    </div>
+    {% endif %}
+</main>
+<script
+        src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous">
+</script>
+<script>
+    var timer;
+    var loading;
+
+    function handleStatus(data) {
+        if (data.server_up) {
+            clearInterval(timer);
+            location.reload();
+        }
+    }
+    function checkStatus() {
+        $.get('status/', handleStatus);
+    }
+
+    function waitForServer() {
+        timer = setInterval(checkStatus, 1000);
+    }
+
+    function wakeup() {
+        $.get('wakeup/', waitForServer);
+        loading.show();
+    }
+
+    $(document).ready(function () {
+        $('#wakeup').click(wakeup);
+        loading = $('.LoadingContainer');
+    });
+</script>
+</body>
+</html>
