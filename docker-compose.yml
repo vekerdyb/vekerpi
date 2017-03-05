@@ -1,0 +1,19 @@
+version: '2'
+services:
+  wakeup:
+    build: .
+    command: "python3 -u wakeup.py"
+    network_mode: 'host'
+    volumes:
+    - .:/app
+  web:
+    build: .
+    environment:
+      FLASK_APP: 'web.py'
+      FLASK_DEBUG: 1
+    command: 'python3 -m flask run --host=0.0.0.0 --port=80'
+    network_mode: 'host'
+    volumes:
+    - .:/app
+    ports:
+    - 80
