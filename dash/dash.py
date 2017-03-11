@@ -29,3 +29,4 @@ def check_server():
     hostname = '192.168.1.80'
     # Ping the server, wait for one successful response of 1 second
     return os.system('ping -c 1 -w 1 {}'.format(hostname)) == 0
+
