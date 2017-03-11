@@ -2,9 +2,9 @@ import os
 from flask import Flask, render_template, jsonify, url_for
 from wakeonlan import wol
 
-import config
+from .config import WAKE_ON_LAN_TARGET
 
-target_mac = config.WAKE_ON_LAN_TARGET
+target_mac = WAKE_ON_LAN_TARGET
 
 app = Flask(__name__)
 
