@@ -1,4 +1,4 @@
-FROM vekerdyb/rpi-python3
+FROM vekerdyb/rpi-python3:latest
 COPY . /app
 WORKDIR /app
 RUN pip3 install -r requirements.txt

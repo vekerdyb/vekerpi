@@ -7,6 +7,9 @@
 <main class="Container">
     {% if server_up %}
     <div class="Status--Positive">The server is up</div>
+    <a class="Link--Watch" href="{{ watch_url }}">Watch</a>
+    <a class="Link--Download" href="{{ download_url }}">Download</a>
+    <a class="Link--Torrent" href="{{ torrent_url }}">Check status</a>
     {% else %}
     <div class="Status--Negative">The server is down</div>
     <div class="Action">

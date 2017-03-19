@@ -5,12 +5,13 @@ services:
       context: .
       dockerfile: Dockerfile.pi
     environment:
-      FLASK_APP: 'src/web.py'
+      FLASK_APP: 'dash/dash.py'
       FLASK_DEBUG: 1
-    # command: 'python3 -m flask run --host=0.0.0.0 --port 8080'
-    command: 'uwsgi -s /tmp/web.sock --manage-script-name --mount /dash=dash.wsgi:app --http 0.0.0.0:80'
+    command: 'python3 -m flask run --host=0.0.0.0 --port 8080'
+    # command: 'uwsgi -s /tmp/web.sock --manage-script-name --mount /dash=dash.wsgi:app --http 0.0.0.0:8080'
     network_mode: 'host'
     volumes:
     - .:/app
     ports:
     - 8080
+    restart: unless-stopped
